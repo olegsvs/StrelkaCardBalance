@@ -7,5 +7,6 @@
 	<string name="btCheckStr">Check!</string>
 	<string name="prBalance">Balance : </string>
 	<string name="internetErr">Check your internet connection!</string>
-
+	<string name="jsonErr">Error parse data from site</string>
+	
 </resources>
