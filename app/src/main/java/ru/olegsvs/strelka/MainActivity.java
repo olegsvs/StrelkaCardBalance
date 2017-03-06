@@ -72,7 +72,7 @@ public class MainActivity extends Activity
 			sb.append(inputLine); in .close();
 		if (isJSONValid(sb.toString()))
 		{
-			JSONObject strelkaJSON =new JSONObject(sb.toString());
+			JSONObject strelkaJSON = new JSONObject(sb.toString());
 			balance.setText(getString(R.string.prBalance) + Double.parseDouble(strelkaJSON.getString("balance")) / 100 + "\u20BD");
 		}
 		else
