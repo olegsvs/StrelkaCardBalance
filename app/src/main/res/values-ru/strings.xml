@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name"> Карта стрелка : Баланс</string>
+    <string name="hint_8dg">Пожалуйста, введите 8 знаков ID!</string>
+	<string name="IdNotFnd">Карта с таким ID не найденв!</string>
+	<string name="btCheckStr">Узнать!</string>
+	<string name="prBalance">Баланс : </string>
+	<string name="internetErr">Проверьте свое интернет соединение!</string>
+	
+</resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:gravity="center|center_vertical"
+	android:orientation="vertical">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/tvBalance"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="@+string/btCheckStr"
+		android:id="@+id/btCheckIt"
+		android:onClick="getValues"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:ems="10"
+		android:inputType="number"
+		android:maxLength="11"
+		android:id="@+id/edStrelkaId"/>
+
+</LinearLayout>
+
