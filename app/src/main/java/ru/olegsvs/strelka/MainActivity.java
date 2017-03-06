@@ -8,6 +8,7 @@ import android.widget.*;
 import java.io.*;
 import java.net.*;
 import ru.olegsvs.strelka.*;
+import org.json.JSONObject;
 
 public class MainActivity extends Activity {
  private TextView balance;
@@ -58,8 +59,7 @@ public class MainActivity extends Activity {
 
   while ((inputLine = in .readLine()) != null)
    sb.append(inputLine); in .close();
-  Integer a = sb.indexOf("balance") + 9;
-  Integer b = sb.indexOf("baserate") - 2;
-	 balance.setText(getString(R.string.prBalance) + Double.parseDouble(sb.substring(a, b)) / 100 + "\u20BD");
+   JSONObject strelkaJSON =new JSONObject(sb.toString());
+	 balance.setText(getString(R.string.prBalance) + Double.parseDouble(strelkaJSON.getString("balance")) / 100 + "\u20BD");
  }
 }
