@@ -10,9 +10,10 @@ import java.net.*;
 import ru.olegsvs.strelka.*;
 
 public class MainActivity extends Activity {
- TextView balance;
- Button btCheckIt;
- EditText edStrelkaId;
+ private TextView balance;
+ private Button btCheckIt;
+ private EditText edStrelkaId;
+ 
  @Override
  protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
