@@ -11,7 +11,6 @@ import ru.olegsvs.strelka.*;
 
 public class MainActivity extends Activity {
  private TextView balance;
- private Button btCheckIt;
  private EditText edStrelkaId;
  
  @Override
