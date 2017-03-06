@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
  }
  public void getValues(View v) {
   if (edStrelkaId.length() < 11) {
-   balance.setText(R.string.hint_8dg);
+   balance.setText(R.string.hint_11dg);
    return;
   }
   SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);

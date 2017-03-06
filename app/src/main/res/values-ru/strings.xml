@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name"> Карта стрелка : Баланс</string>
-    <string name="hint_8dg">Пожалуйста, введите 8 знаков ID!</string>
+    <string name="hint_11dg">Пожалуйста, введите 11 знаков ID!</string>
 	<string name="IdNotFnd">Карта с таким ID не найденв!</string>
 	<string name="btCheckStr">Узнать!</string>
 	<string name="prBalance">Баланс : </string>
