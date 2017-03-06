@@ -61,7 +61,7 @@ public class MainActivity extends Activity
 
 	public void getBalance() throws Exception
 	{
-		URL strelka = new URL("http://strelkacard.ru/api/cards/status/?cardnum=" + edStrelkaId.getText().toString() + "&cardtypeid=3ae427a1-0f17-4524-acb1-a3f50090a8f3");
+		URL strelka = new URL("https://strelkacard.ru/api/cards/status/?cardnum=" + edStrelkaId.getText().toString() + "&cardtypeid=3ae427a1-0f17-4524-acb1-a3f50090a8f3");
 		BufferedReader in = new BufferedReader(
 			new InputStreamReader(strelka.openStream()));
 
@@ -87,14 +87,14 @@ public class MainActivity extends Activity
 		}
 		catch (JSONException ex)
 		{
-			try
+		/*	try
 			{
 				new JSONArray(test);
 			}
 			catch (JSONException ex1)
-			{
+			{*/
 				return false;
-			}
+		//	}
 		}
 		return true;
 	}
