@@ -60,6 +60,6 @@ public class MainActivity extends Activity {
    sb.append(inputLine); in .close();
   Integer a = sb.indexOf("balance") + 9;
   Integer b = sb.indexOf("baserate") - 2;
-  balance.setText(getString(R.string.prBalance) + Double.parseDouble(sb.substring(a, b)) / 100 + "p.");
+	 balance.setText(getString(R.string.prBalance) + Double.parseDouble(sb.substring(a, b)) / 100 + "\u20BD");
  }
 }
