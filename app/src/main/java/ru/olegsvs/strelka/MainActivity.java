@@ -17,7 +17,6 @@ public class MainActivity extends Activity {
  protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(savedInstanceState);
   setContentView(R.layout.main);
-  btCheckIt = (Button) findViewById(R.id.btCheckIt);
   edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
   balance = (TextView) findViewById(R.id.tvBalance);
   balance.setText("");
