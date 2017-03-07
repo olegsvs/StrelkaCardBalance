@@ -83,18 +83,11 @@ public class MainActivity extends Activity
 	{
 		try
 		{
-			new JSONObject(test);
+			new JSONObject(test).getString("balance");
 		}
 		catch (JSONException ex)
 		{
-		/*	try
-			{
-				new JSONArray(test);
-			}
-			catch (JSONException ex1)
-			{*/
 				return false;
-		//	}
 		}
 		return true;
 	}
