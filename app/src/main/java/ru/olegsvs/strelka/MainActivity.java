@@ -15,7 +15,8 @@ import org.json.JSONArray;
 public class MainActivity extends Activity {
     private TextView balance;
     private EditText edStrelkaId;
-    private balanceTask bt;
+    private BalanceTask bt;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +39,13 @@ public class MainActivity extends Activity {
         editor.putString("ID", edStrelkaId.getText().toString());
         editor.commit();
 
-        bt = new balanceTask();
+        bt = new BalanceTask();
         bt.execute();
     }
 
-    class balanceTask extends AsyncTask < Void, Void, String > {
+    class BalanceTask extends AsyncTask < Void, Void, String > {
         private String result;
+        
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
