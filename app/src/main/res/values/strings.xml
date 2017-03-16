@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">StrelkaCardBalance</string>
-    <string name="hint_11dg">Pls enter 11 digits!"</string>
-	<string name="IDNotFound">StrelkaId not found!</string>
+    <string name="app_name">StrelkaCard : Balance</string>
+    <string name="hint_11dg">Please enter 11 digits!"</string>
+	<string name="IDNotFound">Strelka ID not found!</string>
 	<string name="btCheckStr">Check!</string>
 	<string name="prBalance">Balance : </string>
 	<string name="internetError">Check your internet connection!</string>
