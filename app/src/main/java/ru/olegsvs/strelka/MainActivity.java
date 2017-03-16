@@ -68,14 +68,14 @@ public class MainActivity extends Activity {
                     JSONObject strelkaJSON = new JSONObject(sb.toString());
                     result = (getString(R.string.prBalance) + Double.parseDouble(strelkaJSON.getString("balance")) / 100 + "\u20BD");
                 } else
-                    result = getString(R.string.jsonErr);
+                    result = getString(R.string.jsonError);
             } catch (Exception e) {
                 if (e.toString().contains("FileNotFound"))
-                    result = getString(R.string.IdNotFnd);
+                    result = getString(R.string.IDNotFound);
                 if (e.toString().contains("UnknownHost"))
-                    result = getString(R.string.internetErr);
-            };
-            return result.toString();
+                    result = getString(R.string.internetError);
+            }
+            return (result != null) ? result.toString() : getString(R.string.UnknownError);
         }
 
         @Override

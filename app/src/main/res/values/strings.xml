@@ -3,11 +3,12 @@
 
     <string name="app_name">StrelkaCardBalance</string>
     <string name="hint_11dg">Pls enter 11 digits!"</string>
-	<string name="IdNotFnd">StrelkaId not found!</string>
+	<string name="IDNotFound">StrelkaId not found!</string>
 	<string name="btCheckStr">Check!</string>
 	<string name="prBalance">Balance : </string>
-	<string name="internetErr">Check your internet connection!</string>
-	<string name="jsonErr">Error parse data from site</string>
+	<string name="internetError">Check your internet connection!</string>
+	<string name="jsonError">Error parse data from site</string>
 	<string name="loading">Loading...</string>
+	<string name="UnknownError">Unknown Error!</string>
 	
 </resources>
