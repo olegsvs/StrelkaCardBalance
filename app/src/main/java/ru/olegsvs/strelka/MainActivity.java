@@ -23,10 +23,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.main);
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
-        balance.setText("");
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         if (sharedPref.contains("ID")) {
             edStrelkaId.setText(sharedPref.getString("ID", ""));
+			balance.setText(R.string.pressMe);
         }
     }
     public void getValues(View v) {

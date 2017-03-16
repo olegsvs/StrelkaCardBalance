@@ -10,5 +10,7 @@
 	<string name="jsonError">Ошибка разбора данных с сайта</string>
 	<string name="loading">Загрузка...</string>
 	<string name="UnknownError">Неизвестная ошибка!"</string>
+	<string name="startHint">Введите номер карты</string>
+	<string name="pressMe">Нажмите на кнопку, чтобы узнать баланс</string>
 	
 </resources>

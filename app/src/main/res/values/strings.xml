@@ -10,5 +10,7 @@
 	<string name="jsonError">Error parse data from site</string>
 	<string name="loading">Loading...</string>
 	<string name="UnknownError">Unknown Error!</string>
+	<string name="startHint">Enter your ID</string>
+	<string name="pressMe">Press button for get balance</string>
 	
 </resources>
