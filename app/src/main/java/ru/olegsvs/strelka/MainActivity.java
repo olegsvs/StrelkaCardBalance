@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         if (sharedPref.contains("ID")) {
             edStrelkaId.setText(sharedPref.getString("ID", ""));
-			balance.setText(R.string.pressMe);
+            balance.setText(R.string.pressMe);
         }
     }
     public void getValues(View v) {
