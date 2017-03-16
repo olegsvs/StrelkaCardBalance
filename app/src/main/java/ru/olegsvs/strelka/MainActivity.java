@@ -23,9 +23,9 @@ public class MainActivity extends Activity {
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
         balance.setText("");
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-        if (sharedPref.contains("StrelkaIds")) {
-            edStrelkaId.setText(sharedPref.getString("StrelkaIds", ""));
+        SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
+        if (sharedPref.contains("ID")) {
+            edStrelkaId.setText(sharedPref.getString("ID", ""));
         }
     }
     public void getValues(View v) {
@@ -33,9 +33,9 @@ public class MainActivity extends Activity {
             balance.setText(R.string.hint_11dg);
             return;
         }
-        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("StrelkaIds", edStrelkaId.getText().toString());
+        editor.putString("ID", edStrelkaId.getText().toString());
         editor.commit();
 
         bt = new balanceTask();
