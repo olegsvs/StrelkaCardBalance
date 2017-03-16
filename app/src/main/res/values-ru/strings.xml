@@ -8,5 +8,6 @@
 	<string name="prBalance">Баланс : </string>
 	<string name="internetErr">Проверьте свое интернет соединение!</string>
 	<string name="jsonErr">Ошибка разбора данных с сайта</string>
+	<string name="loading">Загрузка...</string>
 	
 </resources>

@@ -16,7 +16,7 @@ public class MainActivity extends Activity
 {
 	private TextView balance;
 	private EditText edStrelkaId;
-
+    private balanceTask bt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -30,9 +30,6 @@ public class MainActivity extends Activity
 		{
 			edStrelkaId.setText(sharedPref.getString("StrelkaIds", ""));
 		}
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().build();
-		StrictMode.setThreadPolicy(policy);
-
 	}
 	public void getValues(View v)
 	{
@@ -45,50 +42,72 @@ public class MainActivity extends Activity
 		SharedPreferences.Editor editor = sharedPref.edit();
 		editor.putString("StrelkaIds", edStrelkaId.getText().toString());
 		editor.commit();
-		try
-		{
-			getBalance();
-		}
-		catch (Exception e)
-		{
-			if (e.toString().contains("FileNotFound"))
-				balance.setText(R.string.IdNotFnd);
-			if (e.toString().contains("UnknownHost"))
-				balance.setText(R.string.internetErr);
-
-		}
+		
+		bt = new balanceTask();
+	    bt.execute();
 	}
 
-	public void getBalance() throws Exception
+    class balanceTask extends AsyncTask<Void, Void, String>
 	{
-		URL strelka = new URL("https://strelkacard.ru/api/cards/status/?cardnum=" + edStrelkaId.getText().toString() + "&cardtypeid=3ae427a1-0f17-4524-acb1-a3f50090a8f3");
-		BufferedReader in = new BufferedReader(
-			new InputStreamReader(strelka.openStream()));
-
-		String inputLine;
-		StringBuilder sb = new StringBuilder();
-
-		while ((inputLine = in .readLine()) != null)
-			sb.append(inputLine); in .close();
-		if (isJSONValid(sb.toString()))
+		private String result;
+		@Override
+		protected void onPreExecute()
 		{
-			JSONObject strelkaJSON = new JSONObject(sb.toString());
-			balance.setText(getString(R.string.prBalance) + Double.parseDouble(strelkaJSON.getString("balance")) / 100 + "\u20BD");
+			super.onPreExecute();
+			balance.setText(R.string.loading);
 		}
-		else
-			balance.setText(R.string.jsonErr);
-	}
 
-	public boolean isJSONValid(String test)
-	{
-		try
+		@Override
+		protected String doInBackground(Void[] p1)
 		{
-			new JSONObject(test).getString("balance");
+			try
+			{
+				URL strelka = new URL("https://strelkacard.ru/api/cards/status/?cardnum=" + edStrelkaId.getText().toString() + "&cardtypeid=3ae427a1-0f17-4524-acb1-a3f50090a8f3");
+				BufferedReader in = new BufferedReader(
+					new InputStreamReader(strelka.openStream()));
+
+				String inputLine;
+				StringBuilder sb = new StringBuilder();
+
+				while ((inputLine = in .readLine()) != null)
+					sb.append(inputLine); in .close();
+				if (isJSONValid(sb.toString()))
+				{
+					JSONObject strelkaJSON = new JSONObject(sb.toString());
+					result = (getString(R.string.prBalance) + Double.parseDouble(strelkaJSON.getString("balance")) / 100 + "\u20BD");
+				}
+				else
+					result = getString(R.string.jsonErr);
+			}
+
+			catch ( Exception e)
+			{
+				if (e.toString().contains("FileNotFound"))
+					result = getString(R.string.IdNotFnd);
+				if (e.toString().contains("UnknownHost"))
+					result = getString(R.string.internetErr);
+			};
+			return result.toString(); 
 		}
-		catch (JSONException ex)
+
+		@Override
+		protected void onPostExecute(String result)
 		{
+			super.onPostExecute(result);
+			balance.setText(result);
+		}
+
+		private boolean isJSONValid(String test)
+		{
+			try
+			{
+				new JSONObject(test).getString("balance");
+			}
+			catch (JSONException ex)
+			{
 				return false;
+			}
+			return true;
 		}
-		return true;
 	}
 }
