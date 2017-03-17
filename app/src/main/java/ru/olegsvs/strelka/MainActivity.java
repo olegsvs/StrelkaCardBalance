@@ -16,13 +16,17 @@ public class MainActivity extends Activity {
     private TextView balance;
     private EditText edStrelkaId;
     private BalanceTask bt;
+	private Button btCheckIt;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
+		btCheckIt = (Button) findViewById(R.id.btCheckIt);
+		
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         if (sharedPref.contains("ID")) {
             edStrelkaId.setText(sharedPref.getString("ID", ""));
@@ -50,6 +54,7 @@ public class MainActivity extends Activity {
         protected void onPreExecute() {
             super.onPreExecute();
             balance.setText(R.string.loading);
+			btCheckIt.setEnabled(false);
         }
 
         @Override
@@ -82,6 +87,7 @@ public class MainActivity extends Activity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             balance.setText(result);
+			btCheckIt.setEnabled(true);
         }
 
         private boolean isJSONValid(String test) {
