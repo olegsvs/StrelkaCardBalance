@@ -3,7 +3,7 @@
 
     <string name="app_name">Карта стрелка : Баланс</string>
     <string name="hint_11dg">Пожалуйста, введите 11 знаков ID!</string>
-	<string name="IDNotFound">Карта с таким ID не найденв!</string>
+	<string name="IDNotFound">Карта с таким ID не найдена!</string>
 	<string name="btCheckStr">Узнать!</string>
 	<string name="prBalance">Баланс : </string>
 	<string name="internetError">Проверьте свое интернет соединение!</string>
