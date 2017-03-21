@@ -7,10 +7,8 @@ import android.view.*;
 import android.widget.*;
 import java.io.*;
 import java.net.*;
-import ru.olegsvs.strelka.*;
 import org.json.JSONObject;
 import org.json.JSONException;
-import org.json.JSONArray;
 
 public class MainActivity extends Activity {
     private TextView balance;
