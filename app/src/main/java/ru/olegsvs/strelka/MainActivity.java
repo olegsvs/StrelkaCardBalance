@@ -15,7 +15,6 @@ import org.json.JSONArray;
 public class MainActivity extends Activity {
     private TextView balance;
     private EditText edStrelkaId;
-    private BalanceTask bt;
     private Button btCheckIt;
     
     @Override
@@ -25,7 +24,7 @@ public class MainActivity extends Activity {
 		
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
-	btCheckIt = (Button) findViewById(R.id.btCheckIt);
+	    btCheckIt = (Button) findViewById(R.id.btCheckIt);
 		
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         if (sharedPref.contains("ID")) {
@@ -41,26 +40,27 @@ public class MainActivity extends Activity {
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("ID", edStrelkaId.getText().toString());
-        editor.commit();
+        editor.apply();
 
-        bt = new BalanceTask();
+        BalanceTask bt = new BalanceTask();
         bt.execute();
     }
 
-    class BalanceTask extends AsyncTask < Void, Void, String > {
-        private String result;
-        
+    private class BalanceTask extends AsyncTask < Void, Void, String > {
+        private String result, ID;
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             balance.setText(R.string.loading);
             btCheckIt.setEnabled(false);
+            ID = edStrelkaId.getText().toString();
         }
 
         @Override
         protected String doInBackground(Void[] p1) {
             try {
-                URL strelka = new URL("https://strelkacard.ru/api/cards/status/?cardnum=" + edStrelkaId.getText().toString() + "&cardtypeid=3ae427a1-0f17-4524-acb1-a3f50090a8f3");
+                URL strelka = new URL("https://strelkacard.ru/api/cards/status/?cardnum=" + ID + "&cardtypeid=3ae427a1-0f17-4524-acb1-a3f50090a8f3");
                 BufferedReader in = new BufferedReader(
                     new InputStreamReader(strelka.openStream()));
 
@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
                 if (e.toString().contains("UnknownHost"))
                     result = getString(R.string.internetError);
             }
-            return (result != null) ? result.toString() : getString(R.string.UnknownError);
+            return (result != null) ? result : getString(R.string.UnknownError);
         }
 
         @Override
