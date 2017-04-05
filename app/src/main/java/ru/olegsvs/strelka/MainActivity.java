@@ -10,7 +10,10 @@ import java.net.*;
 import org.json.JSONObject;
 import org.json.JSONException;
 
+import com.baoyz.widget.PullRefreshLayout;
+
 public class MainActivity extends Activity {
+    private PullRefreshLayout layout;
     private TextView balance;
     private EditText edStrelkaId;
     private Button btCheckIt;
@@ -23,7 +26,27 @@ public class MainActivity extends Activity {
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
 	    btCheckIt = (Button) findViewById(R.id.btCheckIt);
-		
+        PullRefreshLayout layout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getValues(null);
+            }
+        });
+
+        ScrollView view = (ScrollView)findViewById(R.id.scView);
+        view.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true);
+        view.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.requestFocusFromTouch();
+                return false;
+            }
+        });
+
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         if (sharedPref.contains("ID")) {
             edStrelkaId.setText(sharedPref.getString("ID", ""));
@@ -86,6 +109,7 @@ public class MainActivity extends Activity {
             super.onPostExecute(result);
             balance.setText(result);
             btCheckIt.setEnabled(true);
+            layout.setRefreshing(false);
         }
 
         private boolean isJSONValid(String test) {
