@@ -19,11 +19,21 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		
+	
+	    PullRefreshLayout layout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
 	    btCheckIt = (Button) findViewById(R.id.btCheckIt);
-		
+	
+	    layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+    @Override
+    public void onRefresh() {
+        // start refresh
+    }
+});
+	    
+	    // refresh complete 
+layout.setRefreshing(false);
         SharedPreferences sharedPref = getSharedPreferences("StrelkaIDs", Context.MODE_PRIVATE);
         if (sharedPref.contains("ID")) {
             edStrelkaId.setText(sharedPref.getString("ID", ""));
