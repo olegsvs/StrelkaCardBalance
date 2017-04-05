@@ -32,14 +32,20 @@ public class MainActivity extends Activity {
 			android.R.color.holo_green_light,
 			android.R.color.holo_orange_light,
 			android.R.color.holo_red_light);
+			
 		layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 				@Override
 				public void onRefresh() {
-					getValues(null);
-					layout.setRefreshing(false);
+					layout.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							layout.setRefreshing(false);
+							getValues(null);
+						}
+					}, 500);
 				}
 			});
-
+						
         ScrollView view = (ScrollView)findViewById(R.id.scView);
         view.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         view.setFocusable(true);
