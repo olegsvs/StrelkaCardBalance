@@ -1,4 +1,4 @@
-package strelka.olegsvs.ru.strelkacardbalance;
+package ru.olegsvs.strelka;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("strelka.olegsvs.ru.strelkacardbalance", appContext.getPackageName());
+        assertEquals("ru.olegsvs.strelka", appContext.getPackageName());
     }
 }

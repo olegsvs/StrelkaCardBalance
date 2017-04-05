@@ -1,4 +1,4 @@
-package strelka.olegsvs.ru.strelkacardbalance;
+package ru.olegsvs.strelka;
 
 import org.junit.Test;
 

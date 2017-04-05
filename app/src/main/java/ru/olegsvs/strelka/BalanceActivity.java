@@ -1,4 +1,4 @@
-package strelka.olegsvs.ru.strelkacardbalance;
+package ru.olegsvs.strelka;
 
 import android.content.Context;
 import android.content.SharedPreferences;
