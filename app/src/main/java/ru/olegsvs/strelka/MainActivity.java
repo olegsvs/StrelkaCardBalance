@@ -10,7 +10,8 @@ import java.net.*;
 import org.json.JSONObject;
 import org.json.JSONException;
 
-import com.baoyz.widget.PullRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.annotation.*;
 
 public class MainActivity extends Activity {
     private TextView balance;
@@ -22,12 +23,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 		
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
         edStrelkaId = (EditText) findViewById(R.id.edStrelkaId);
         balance = (TextView) findViewById(R.id.tvBalance);
 	    btCheckIt = (Button) findViewById(R.id.btCheckIt);
-        final PullRefreshLayout layout = (PullRefreshLayout) findViewById(R.id.swipeRefreshLayout);
-
-		layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+        final SwipeRefreshLayout layout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+		layout.setColorSchemeResources(android.R.color.holo_blue_bright,
+			android.R.color.holo_green_light,
+			android.R.color.holo_orange_light,
+			android.R.color.holo_red_light);
+		layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 				@Override
 				public void onRefresh() {
 					getValues(null);
