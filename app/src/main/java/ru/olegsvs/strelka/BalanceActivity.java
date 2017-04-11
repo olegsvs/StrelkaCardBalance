@@ -133,7 +133,6 @@ public class BalanceActivity extends AppCompatActivity {
 
                 String inputLine;
                 StringBuilder sb = new StringBuilder();
-
                 while ((inputLine = in .readLine()) != null)
                     sb.append(inputLine); in .close();
                 if (isJSONValid(sb.toString())) {

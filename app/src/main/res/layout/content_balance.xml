@@ -10,8 +10,10 @@
     <android.support.v4.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipeRefreshLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp">
     <ScrollView
         android:id="@+id/scView"
         android:layout_width="match_parent"
@@ -25,12 +27,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@+string/startHint"
+                android:text="@string/btCheckStr"
                 android:id="@+id/tvBalance"/>
             <Button
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="@+string/btCheckStr"
+                android:text="@string/btCheckStr"
                 android:id="@+id/btCheckIt"
                 android:onClick="getValues"/>
             <EditText
